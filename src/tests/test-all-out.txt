@@ -1,0 +1,34 @@
+Cart created successfully.
+Cart already exists!
+Cart created successfully.
+Item created successfully.
+Item already exists!
+Item created successfully.
+Item created successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Non-existing item!
+Item added successfully.
+Capacity exceeded!
+Item added successfully.
+Item successfully removed.
+Item is not in cart!
+Non-existing item!
+Item added successfully.
+Item added successfully.
+Non-existing cart!
+rice 108
+rice 108
+rice 108
+napkins 1299
+peas 69
+peas 69
+rice 108
+Non-existing cart!
+1692
+Empty cart!
+peas 69
+rice 108
+Bye!

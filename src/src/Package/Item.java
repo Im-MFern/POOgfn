@@ -2,7 +2,9 @@ package Package;
 
 public interface Item
 {
-    void increaseCounter();
+    String getID();
 
-    int getCounter();
+    int getSize();
+
+    int getPrice();
 }

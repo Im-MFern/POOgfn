@@ -1,0 +1,10 @@
+NEW ITEM rice 108 2
+NEW ITEM rice 70 2
+NEW ITEM napkins 1299 10
+NEW ITEM peas 69 1
+NEW ITEM soap 129 3
+NEW ITEM rice 108 2
+NEW ITEM napkins 1299 10
+NEW ITEM soap 129 3
+NEW ITEM peas 69 1
+EXIT

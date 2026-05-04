@@ -4,12 +4,13 @@
  * Rodrigo Miguel Pires Paulo Nº74906
  */
 
+import java.util.Iterator;
 import java.util.Scanner;
 
+import Package.Exceptions.*;
 import Package.ShoppingMall;
 import Package.ShoppingMallClass;
-import Package.Exceptions.CartExists;
-import Package.Exceptions.ItemExists;
+import Package.Item;
 
 public class Main
 {
@@ -18,10 +19,17 @@ public class Main
 
     private final static String UNKNOWN_CMD = "Unknown Command.";
     private final static String CART_EXISTS = "Cart already exists!";
-    private final static String ITEM_EXISTS = "Item already exist!";
-
-    private final static String CART_ADDED = "Cart added successfully.";
+    private final static String ITEM_EXISTS = "Item already exists!";
+    private final static String NO_CART = "Non-existing cart!";
+    private final static String NO_ITEM = "Non-existing item!";
+    private final static String CAPACITY_EXCEEDED = "Capacity exceeded!";
+    private final static String CART_ADDED = "Cart created successfully.";
+    private final static String NO_ITEM_IN_CART = "Item is not in cart!";
+    private final static String EMPTY_CART = "Empty cart!";
     private final static String ITEM_ADDED = "Item added successfully.";
+    private final static String ITEM_REMOVED = "Item successfully removed.";
+    private final static String ITEM_CREATED = "Item created successfully.";
+    private final static String LIST = "%s %d\n";
     private final static String EXITING = "Bye!";
 
     public static void main(String[] args)
@@ -65,41 +73,78 @@ public class Main
     {
         switch(command){
             case NEW -> newCmdReader(SM, fullCmd);
-            case ADD -> addCmd(fullCmd);
-            case REMOVE -> removeCmd(fullCmd);
-            case LIST -> listCmd(fullCmd);
-            case PAY -> payCmd(fullCmd);
+            case ADD -> addCmd(SM, fullCmd);
+            case REMOVE -> removeCmd(SM, fullCmd);
+            case LIST -> listCmd(SM, fullCmd);
+            case PAY -> payCmd(SM, fullCmd);
             case EXIT -> exitCmd();
             case UNKNOWN -> doNothing();
         }
     }
 
-    private static void addCmd(String[] fullCmd)
+    private static void addCmd(ShoppingMall SM, String[] fullCmd)
     {
-        
+        try {
+            SM.addToCart(fullCmd[1],fullCmd[2]);
+            System.out.println(ITEM_ADDED);
+        }catch (NonExistingCart e){
+            System.out.println(NO_CART);
+        }catch (NonExistingItem e){
+            System.out.println(NO_ITEM);
+        }catch (CapacityExceeded e){
+            System.out.println(CAPACITY_EXCEEDED);
+        }
     }
 
-    private static void payCmd(String[] fullCmd)
+    private static void payCmd(ShoppingMall SM, String[] fullCmd)
     {
-
+        String cartID = fullCmd[1];
+        try {
+            int pay = SM.pay(cartID);
+            if (pay == 0) {
+                System.out.println(EMPTY_CART);
+            } else {
+                System.out.println(pay);
+            }
+        } catch (NonExistingCart e){
+            System.out.println(NO_CART);
+        }
     }
 
-    private static void listCmd(String[] fullCmd)
+    private static void listCmd(ShoppingMall SM, String[] fullCmd)
     {
+        try {
 
+            Iterator<Item> it = SM.itemsIterator(fullCmd[1]);
+            do{
+                Item item = it.next();
+                System.out.printf(LIST,item.getID(),item.getPrice());
+            }while (it.hasNext());
+        }catch (NonExistingItem e){
+            System.out.println(EMPTY_CART);
+        } catch (NonExistingCart e) {
+            System.out.println(NO_CART);
+        }
     }
 
-    private static void removeCmd(String[] fullCmd)
+    private static void removeCmd(ShoppingMall SM, String[] fullCmd)
     {
-
+        try {
+            SM.removeFromCart(fullCmd[1],fullCmd[2]);
+            System.out.println(ITEM_REMOVED);
+        }catch (NonExistingCart e){
+            System.out.println(NO_CART);
+        }catch (NonExistingItem e){
+            System.out.println(NO_ITEM_IN_CART);
+        }
     }
 
     private static void newCmdReader(ShoppingMall SM, String[] fullCmd)
     {
-        if (fullCmd[1].equals("CART")) {
+        if (fullCmd[1].equals(CART)) {
             newCartCmd(SM, fullCmd[2], Integer.parseInt(fullCmd[3]));
-        } else if (fullCmd[1].equals("ITEM")) {
-            newItemCmd(SM, fullCmd[2], Double.parseDouble(fullCmd[3]),Integer.parseInt(fullCmd[4]));
+        } else if (fullCmd[1].equals(ITEM)) {
+            newItemCmd(SM, fullCmd[2], Integer.parseInt(fullCmd[3]),Integer.parseInt(fullCmd[4]));
         } else {
             System.out.println(UNKNOWN_CMD);
         }
@@ -118,18 +163,18 @@ public class Main
     private static void newCartCmd(ShoppingMall SM, String ID, int capacity)
     {
         try {
-            SM.addCart(ID, capacity);
+            SM.newCart(ID, capacity);
             System.out.println(CART_ADDED);
         } catch ( CartExists e ) {
             System.out.println(CART_EXISTS);
         }
     }
 
-    private static void newItemCmd(ShoppingMall SM, String ID, double price, int size)
+    private static void newItemCmd(ShoppingMall SM, String ID, int price, int size)
     {
         try {
-            SM.addItem(ID, price, size);
-            System.out.println(ITEM_ADDED);
+            SM.newItem(ID, price, size);
+            System.out.println(ITEM_CREATED);
         } catch ( ItemExists e ) {
             System.out.println(ITEM_EXISTS);
         }

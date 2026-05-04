@@ -1,0 +1,24 @@
+Cart created successfully.
+Cart created successfully.
+Item created successfully.
+Item created successfully.
+Item created successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item successfully removed.
+Item successfully removed.
+Item successfully removed.
+Item successfully removed.
+Item successfully removed.
+Item is not in cart!
+Item is not in cart!
+Item is not in cart!
+Non-existing cart!
+Bye!

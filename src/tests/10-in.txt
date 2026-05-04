@@ -1,0 +1,37 @@
+PAY cart0
+LIST cart0
+NEW CART cart1 20
+PAY cart1
+LIST cart1
+LIST cart0
+NEW CART cart2 15
+NEW ITEM rice 108 2
+NEW ITEM napkins 1299 10
+NEW ITEM peas 69 1
+PAY trotinete
+PAY rice
+ADD rice cart1
+PAY cart1
+ADD rice cart1
+ADD peas cart1
+PAY cart1
+ADD rice cart1
+ADD napkins cart1
+ADD peas cart1
+ADD rice cart2
+ADD peas cart2
+ADD rice cart1
+REMOVE peas cart2
+LIST cart1
+LIST cart2
+PAY cart2
+REMOVE rice cart1
+REMOVE peas cart1
+REMOVE napkins cart1
+LIST cart1
+PAY cart1
+LIST cart1
+LIST cart2
+PAY cart2
+PAY cart1
+EXIT

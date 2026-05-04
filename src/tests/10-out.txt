@@ -1,0 +1,40 @@
+Non-existing cart!
+Non-existing cart!
+Cart created successfully.
+Empty cart!
+Empty cart!
+Non-existing cart!
+Cart created successfully.
+Item created successfully.
+Item created successfully.
+Item created successfully.
+Non-existing cart!
+Non-existing cart!
+Item added successfully.
+108
+Item added successfully.
+Item added successfully.
+177
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item successfully removed.
+rice 108
+napkins 1299
+peas 69
+rice 108
+rice 108
+108
+Item successfully removed.
+Item successfully removed.
+Item successfully removed.
+rice 108
+108
+Empty cart!
+Empty cart!
+Empty cart!
+Empty cart!
+Bye!

@@ -1,35 +1,61 @@
 package Package;
 
-import java.util.Map;
-import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
 
 public class CartClass implements Cart
 {
     String ID;
     int capacity;
-    int counter;
-    Map<String, Item> cartItems;
+    List<Item> cartItems;
 
     public CartClass(String ID, int capacity)
     {
         this.ID = ID;
         this.capacity = capacity;
-        this.cartItems = new HashMap<String, Item>();
-        counter = 0;
+        this.cartItems = new ArrayList<Item>();
     }
 
-    public void addItemToCart(String ID, double price, int size)
+    public void addItemToCart(Item item)
     {
-        if (cartItems.containsKey(ID)) {
-            cartItems.get(ID).increaseCounter();
-        } else {
-            cartItems.put(ID,new ItemClass(ID,price,size));
-            System.out.println("I hate niggas deluxe");
+        cartItems.add(item);
+        capacity -= item.getSize();
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public boolean itemInCart(Item item) {
+        return cartItems.contains(item);
+    }
+
+    public void removeItemFromCart(Item item) {
+        cartItems.remove(item);
+        capacity += item.getSize();
+    }
+
+    public Iterator<Item> itemIterator()
+    {
+        return cartItems.iterator();
+    }
+
+    public int payAmount()
+    {
+        int amount = 0;
+
+        for (int i = 0; i < cartItems.size(); i++)
+        {
+            amount += cartItems.get(i).getPrice();
         }
+
+        cartItems.clear();
+
+        return amount;
     }
 
-    public boolean isItemInCart(String ID)
-    {
-        return cartItems.containsKey(ID);
+    public boolean isEmpty() {
+        return cartItems.isEmpty();
     }
 }

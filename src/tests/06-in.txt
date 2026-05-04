@@ -1,0 +1,24 @@
+NEW CART cart1 20
+NEW CART cart2 15
+NEW ITEM rice 108 2
+NEW ITEM napkin 1299 10
+NEW ITEM peas 69 1
+ADD rice cart1
+ADD rice cart1
+ADD peas cart1
+ADD rice cart1
+ADD napkin cart1
+ADD peas cart1
+ADD rice cart2
+ADD peas cart2
+ADD rice cart1
+REMOVE rice cart1
+REMOVE peas cart1
+REMOVE napkin cart1
+REMOVE peas cart2
+REMOVE rice cart2
+REMOVE rice cart2
+REMOVE xbox cart1
+REMOVE napkin cart1
+REMOVE rice cart0
+EXIT

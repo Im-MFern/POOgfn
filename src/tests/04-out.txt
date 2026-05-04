@@ -1,0 +1,30 @@
+Cart created successfully.
+Cart created successfully.
+Cart created successfully.
+Cart created successfully.
+Cart created successfully.
+Non-existing item!
+Item created successfully.
+Item created successfully.
+Item created successfully.
+Non-existing cart!
+Non-existing item!
+Non-existing item!
+Non-existing item!
+Non-existing item!
+Non-existing item!
+Non-existing cart!
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Capacity exceeded!
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Item added successfully.
+Capacity exceeded!
+Item added successfully.
+Bye!
