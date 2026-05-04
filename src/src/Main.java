@@ -5,9 +5,11 @@
  */
 
 import java.util.Scanner;
+
 import Package.ShoppingMall;
 import Package.ShoppingMallClass;
-import Package.Exceptions.*;
+import Package.Exceptions.CartExists;
+import Package.Exceptions.ItemExists;
 
 public class Main
 {
