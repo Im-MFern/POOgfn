@@ -59,7 +59,7 @@ public class ShoppingMallClass implements ShoppingMall
         }
     }
 
-    public int pay(String ID)
+    public int pay(String ID) throws  NonExistingCart
     {
         if (doesCartExist(ID)){
             return carts.get(ID).payAmount();
@@ -98,7 +98,8 @@ public class ShoppingMallClass implements ShoppingMall
         return items.containsKey(ID);
     }
 
-    private boolean exceedsCapacity(String ID, String itemID){
+    private boolean exceedsCapacity(String ID, String itemID)
+    {
         boolean exceeds = false;
         int size = items.get(itemID).getSize();
         size -= carts.get(ID).getCapacity();

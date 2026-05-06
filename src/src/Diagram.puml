@@ -1,0 +1,86 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class CartClass{
+    void addItemToCart(Item item)
+    int getCapacity()
+    boolean itemInCart(Item item)
+    void removeItemFromCart(Item item)
+    Iterator<Item> itemIterator()
+    int payAmount()
+    boolean isEmpty()
+}
+
+class ItemClass{
+    String getID()
+    int getSize()
+    int getPrice()
+}
+
+class ShoppingMallClass{
+    void newCart(String ID, int capacity)
+    void newItem(String ID, int price, int size)
+    void addToCart(String itemName, String ID)
+    void removeFromCart(String itemName, String ID)
+    int pay(String ID)
+    Iterator<Item> itemsIterator(String ID)
+    boolean isCartEmpty(String ID)
+    boolean doesItemExistInCart(String itemName, String ID)
+    boolean doesCartExist(String ID)
+    boolean doesItemExist(String ID)
+    boolean exceedsCapacity(String ID, String itemID)
+}
+
+class Main{
+    Command getCommand(String cmd)
+    String[] fullCommandReader(Scanner in)
+    void processCommands(ShoppingMall SM, Scanner in)
+    void processCommand(ShoppingMall SM, Command command, String[] fullCmd)
+    void addCmd(ShoppingMall SM, String[] fullCmd)
+    void payCmd(ShoppingMall SM, String[] fullCmd)
+    void listCmd(ShoppingMall SM, String[] fullCmd)
+    void removeCmd(ShoppingMall SM, String[] fullCmd)
+    void newCmdReader(ShoppingMall SM, String[] fullCmd)
+    void exitCmd()
+    void newCartCmd(ShoppingMall SM, String ID, int capacity)
+    void newItemCmd(ShoppingMall SM, String ID, int price, int size)
+}
+
+interface Cart{
+    void addItemToCart(Item item)
+    int getCapacity()
+    boolean itemInCart(Item item)
+    void removeItemFromCart(Item item)
+    Iterator<Item> itemIterator()
+    int payAmount()
+    boolean isEmpty()
+}
+
+interface Item{
+    String getID()
+    int getSize()
+    int getPrice()
+}
+
+interface ShoppingMall{
+    void newCart(String ID, int capacity)
+    void newItem(String ID, int price, int quantity)
+    void addToCart(String itemName, String ID)
+    void removeFromCart(String itemName, String ID)
+    int pay(String cartID)
+    Iterator<Item> itemsIterator(String ID)
+}
+
+enum Command{
+    NEW, ADD, REMOVE, LIST, PAY, EXIT, UNKNOWN
+}
+
+Main <|-- ShoppingMall
+ShoppingMall <|.- ShoppingMallClass
+ShoppingMallClass <|-- Cart
+Cart <|.- CartClass
+CartClass <|-- Item
+Item <|.- ItemClass
+ShoppingMallClass <|-- Item
+
+@enduml

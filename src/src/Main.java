@@ -60,7 +60,8 @@ public class Main
         return fullCmd.split(" ");
     }
 
-    private static void processCommands(ShoppingMall SM, Scanner in) {
+    private static void processCommands(ShoppingMall SM, Scanner in)
+    {
         Command command;
         do {
             String[] fullCmd = fullCommandReader(in);
