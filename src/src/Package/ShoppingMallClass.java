@@ -169,7 +169,7 @@ public class ShoppingMallClass implements ShoppingMall
 
     /**
      * Returns true if the size of the item with the ID (itemID) given, when
-     * added onto the current capacity of a cart with the ID (ID) given,
+     * subtracted onto the current capacity of a cart with the ID (ID) given,
      * exceeds it's maximum capacity, if not, returns false
      * @param ID String
      * @param itemID String
