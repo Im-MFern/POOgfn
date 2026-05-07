@@ -40,11 +40,19 @@ public class Main
         in.close();
     }
 
+    /**
+     * Enumerate containing the commands used in this program
+     */
     private enum Command
     {
         NEW, ADD, REMOVE, LIST, PAY, EXIT, UNKNOWN
     }
 
+    /**
+     * Reads a String and associates it with a command enum
+     * @param cmd Scanner
+     * @pre cmd != null
+     */
     private static Command getCommand(String cmd)
     {
         try {
@@ -53,13 +61,24 @@ public class Main
             return Command.UNKNOWN;
         }
     }
-    
+
+    /**
+     * Reads an entire line written through the scanner
+     * @param in Scanner
+     * @pre in != null
+     */
     private static String[] fullCommandReader(Scanner in)
     {
         String fullCmd = in.nextLine();
         return fullCmd.split(" ");
     }
 
+    /**
+     * Reads a command and puts it through the processCommand function to execute it
+     * @param SM ShoppingMall
+     * @param in Scanner
+     * @pre SM != null && in != null
+     */
     private static void processCommands(ShoppingMall SM, Scanner in)
     {
         Command command;
@@ -70,6 +89,13 @@ public class Main
         } while (!command.equals(Command.EXIT));
     }
 
+    /**
+     * Executes a given command
+     * @param SM ShoppingMall
+     * @param command Command
+     * @param fullCmd String[]
+     * @pre SM != null && command != null && fullCmd != null
+     */
     private static void processCommand(ShoppingMall SM, Command command, String[] fullCmd)
     {
         switch(command){
@@ -83,6 +109,12 @@ public class Main
         }
     }
 
+    /**
+     * Creates a new ShoppingCart or Item in the system
+     * @param SM ShoppingMall
+     * @param fullCmd String[]
+     * @pre SM != null && fullCmd != null
+     */
     private static void addCmd(ShoppingMall SM, String[] fullCmd)
     {
         try {
@@ -97,6 +129,13 @@ public class Main
         }
     }
 
+    /**
+     * Tallies up all of the items in a cart, deletes them from the cart, and returns their
+     * value, if the cart has no items, prints EMPTY_CART
+     * @param SM ShoppingMall
+     * @param fullCmd String[]
+     * @pre SM != null && fullCmd != null
+     */
     private static void payCmd(ShoppingMall SM, String[] fullCmd)
     {
         String cartID = fullCmd[1];
@@ -112,6 +151,13 @@ public class Main
         }
     }
 
+    /**
+     * List all the items in a given cart, if the cart if empty,
+     * prints EMPTY_CART
+     * @param SM ShoppingMall
+     * @param fullCmd String[]
+     * @pre SM != null && fullCmd != null
+     */
     private static void listCmd(ShoppingMall SM, String[] fullCmd)
     {
         try {
@@ -128,6 +174,13 @@ public class Main
         }
     }
 
+    /**
+     * Attempts to remove a given item from a given cart, if the cart does not exist,
+     * prints NO_CART, and if the item given is not in the given cart, prints NO_ITEM_IN_CART
+     * @param SM ShoppingMall
+     * @param fullCmd String[]
+     * @pre SM != null && fullCmd != null
+     */
     private static void removeCmd(ShoppingMall SM, String[] fullCmd)
     {
         try {
@@ -140,6 +193,13 @@ public class Main
         }
     }
 
+    /**
+     * Reads if the variable given after the NEW command is either a cart or an item,
+     * if not, prints UNKNOWN_CMD
+     * @param SM ShoppingMall
+     * @param fullCmd String[]
+     * @pre SM != null && fullCmd != null
+     */
     private static void newCmdReader(ShoppingMall SM, String[] fullCmd)
     {
         if (fullCmd[1].equals(CART)) {
@@ -151,16 +211,29 @@ public class Main
         }
     }
 
+    /**
+     * Prints EXITING
+     */
     private static void exitCmd()
     {
         System.out.println(EXITING);
     }
 
+    /**
+     * Prints UNKNOWN_CMD
+     */
     private static void doNothing()
     {
         System.out.println(UNKNOWN_CMD);
     }
 
+    /**
+     * Creates a new cart in the system, with it's own ID and capacity
+     * @param SM ShoppingMall
+     * @param ID String
+     * @param capacity int
+     * @pre SM != null && ID != null && capacity >= 0
+     */
     private static void newCartCmd(ShoppingMall SM, String ID, int capacity)
     {
         try {
@@ -171,6 +244,14 @@ public class Main
         }
     }
 
+    /**
+     * Creates a new item in the system, with it's ow ID, price, and size
+     * @param SM ShoppingMall
+     * @param ID String
+     * @param price int
+     * @param size int
+     * @pre SM != null && ID != null && price >= 0 && size >= 0
+     */
     private static void newItemCmd(ShoppingMall SM, String ID, int price, int size)
     {
         try {
